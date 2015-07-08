@@ -20,6 +20,9 @@ data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 datetime <- paste(as.Date(data$Date), data$Time)
 data$Datetime <- as.POSIXct(datetime)
 
+# set the device, file name and parameter
+png(filename="plot3.png", width = 480, height = 480)
+par(mfrow=c(1,1))
 
 # construct the plot and change the plotting symbol to a line, add annotiations (change the x & y axis label, 
 # change the colour of the lines to red and blue respectively) 
@@ -33,8 +36,7 @@ with(data, {
 legend("topright", col = c("black", "red", "blue"), lty = 1, lwd = 2, 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
-# save plot to a png file with a width of 480 pixels and a height of 480 pixels and close the device
-dev.copy(png, file = "plot3.png",  width = 480, height = 480)
+# close the device
 dev.off()
 
 # close connection to the file

@@ -20,6 +20,8 @@ data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 datetime <- paste(as.Date(data$Date), data$Time)
 data$Datetime <- as.POSIXct(datetime)
 
+# set the device, file name and parameter
+png(filename="plot4.png", width = 480, height = 480)
 
 # set up a plot with 2 row 2 columns, set the margin and outer margins
 par(mfrow = c(2, 2), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
@@ -36,8 +38,7 @@ with(data, {
     plot(Global_reactive_power ~ Datetime, type = "l", ylab = "Global_reactive_power", xlab = "datetime")}
 )
 
-# save plot to a png file with a width of 480 pixels and a height of 480 pixels and close the device
-dev.copy(png, file = "plot4.png",  width = 480, height = 480)
+# close the device
 dev.off()
 
 # close connection to the file
